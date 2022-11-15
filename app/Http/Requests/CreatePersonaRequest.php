@@ -25,8 +25,8 @@ class CreatePersonaRequest extends FormRequest
     {
         return [
             'cPerApellido' => 'required',
-            'cPerDireccion' => 'required',
             'cPerNombre' => 'required',
+            'cPerDireccion' => 'required',
             'dPerFecNac' => 'required|date|before:yesterday',
             'nPerEdad' => 'required',
             'nPerSueldo' => 'required',
@@ -38,8 +38,8 @@ class CreatePersonaRequest extends FormRequest
     {
         return [
             'cPerApellido.required' => 'Se necesita un apellido para identificarlo',
-            'cPerDireccion.required' => 'Ingresa su lugar de residencia',
             'cPerNombre' => 'Se necesita un nombre para identificarlo',
+            'cPerDireccion.required' => 'Ingresa su lugar de residencia',
             'dPerFecNac' => 'Ingrese su fecha de nacimiento',
             'nPerEdad' => 'Ingrese su edad',
             'nPerSueldo' => 'Ingrese el sueldo',

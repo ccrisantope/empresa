@@ -2,6 +2,14 @@
 @section('title','personas|'.$persona->nPerCodigo)
 @section('content')
     <h2>Personas</h2>
+    <td colspan="4">{{$persona->cPerNombre}}
+        <a href="{{route('personas.edit',$persona)}}">Editar</a>
+    </td>
+    <td colspan="4">
+        <form action="{{route('personas.destroy',$persona)}}" method="POST">
+            @csrf @method('DELETE')
+            <button>Eliminar</button>
+    </td>
     <ul>
 
         <li>

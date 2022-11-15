@@ -26,7 +26,9 @@ class PersonasController extends Controller
      */
     public function create()
     {
-        return view('create');
+        return view('create', [
+            'persona' => new Persona,
+        ]);
     }
 
     /**
@@ -47,10 +49,10 @@ class PersonasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($nPerCodigo)
+    public function show($persona)
     {
         return view('show', [
-            'persona' => Persona::find($nPerCodigo),
+            'persona' => Persona::find($persona),
         ]);
     }
 
@@ -60,9 +62,11 @@ class PersonasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Persona $persona)
     {
-        //
+        return view('edit', [
+            'persona' => $persona,
+        ]);
     }
 
     /**
@@ -72,9 +76,10 @@ class PersonasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Persona $persona, CreatePersonaRequest $request)
     {
-        //
+        $persona->update($request->validated());
+        return redirect()->route('personas.show', $persona);
     }
 
     /**
@@ -83,8 +88,9 @@ class PersonasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Persona $persona)
     {
-        //
+        $persona->delete();
+        return redirect()->route('personas.index');
     }
 }
